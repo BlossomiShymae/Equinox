@@ -2,7 +2,6 @@ package views.pages;
 
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
-import events.NotificationRemovedEvent;
 import services.EventAggregatorService;
 import utils.mvvm.PropertyChangedEventArgs;
 import viewmodels.controls.NotificationCardViewModel;
