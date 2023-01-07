@@ -12,6 +12,7 @@ import utils.mvvm.PropertyChangedEventArgs;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
@@ -64,7 +65,9 @@ public class NotificationsViewModel extends ObservableObject {
     }
 
     public ArrayList<Notification> getNotificationHistory() {
-        return notificationHistory;
+        var history = notificationHistory;
+        Collections.reverse(history);
+        return history;
     }
 
     private void removeNotification(Notification notification) {
