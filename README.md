@@ -1,3 +1,6 @@
+![equinox_wordmark](https://user-images.githubusercontent.com/87099578/211173064-8c6fff22-6f4b-410e-a850-fbdfd353fdf4.png)
+
+
 # 🌟 Equinox
 Equinox is a friend notifier app for your League client that alerts when a friend comes online! This is a great 
 alternative to manually scrolling your friends list to see if a certain friend is online, ready to game or chat with!
