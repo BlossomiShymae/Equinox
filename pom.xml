@@ -6,11 +6,43 @@
 
     <groupId>com.blossomishymae</groupId>
     <artifactId>equinox</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.panteleyev</groupId>
+                <artifactId>jpackage-maven-plugin</artifactId>
+                <version>1.3.0</version>
+                <configuration>
+                    <name>Equinox</name>
+                    <appVersion>${project.version}</appVersion>
+                    <runtimeImage>${java.home}</runtimeImage>
+                    <type>APP_IMAGE</type>
+                    <input>build</input>
+                    <icon>icons/icon.ico</icon>
+                    <mainClass>Main</mainClass>
+                    <mainJar>${project.artifactId}-${project.version}-jar-with-dependencies.jar</mainJar>
+                    <destination>dist</destination>
+                    <javaOptions>
+                        <option>--enable-preview</option>
+                        <option>-Dfile.encoding=UTF-8</option>
+                    </javaOptions>
+                </configuration>
+
+                <executions>
+                    <execution>
+                        <id>win</id>
+                        <configuration>
+                            <icon>icons/icon.ico</icon>
+                            <winMenu>true</winMenu>
+                            <winShortcut>true</winShortcut>
+                            <winDirChooser>true</winDirChooser>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -22,6 +54,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
+                            <outputDirectory>build</outputDirectory>
                             <archive>
                                 <manifest>
                                     <mainClass>
