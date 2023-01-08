@@ -2,6 +2,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.pushingpixels.radiance.theming.api.skin.RadianceNightShadeLookAndFeel;
 import services.ApplicationInjectorService;
+import services.ResourceLoaderService;
 import views.MainWindowView;
 import views.SystemTray;
 
@@ -20,6 +21,10 @@ public class Main implements Runnable {
             exception.printStackTrace(System.out);
         }
         Injector injector = Guice.createInjector(new ApplicationInjectorService());
+
+        // Get resource loader for setting version information.
+        ResourceLoaderService resourceLoader = injector.getInstance(ResourceLoaderService.class);
+        resourceLoader.setVersion(Main.class);
 
         // Get system tray for init.
         SystemTray tray = injector.getInstance(SystemTray.class);
