@@ -10,7 +10,7 @@ public class Preference {
     public Preference(String key, String defaultValue) {
         this.key = key;
         this.defaultValue = defaultValue;
-        preferences = Preferences.userNodeForPackage(this.getClass());
+        preferences = Preferences.userRoot().node("com/blossomishymae/prefs");
     }
 
     public String get() {
