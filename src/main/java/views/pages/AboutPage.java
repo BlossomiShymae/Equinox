@@ -23,12 +23,13 @@ public class AboutPage extends Page {
     @Inject
     public AboutPage(AboutViewModel aboutViewModel) throws IOException, XmlPullParserException {
         super();
+        add(rootPanel);
         viewModel = aboutViewModel;
+
         wordmarkLabel.setIcon(viewModel.getWordmarkImageIcon());
         MavenXpp3Reader reader = new MavenXpp3Reader();
         Model model = reader.read(new FileReader("pom.xml"));
         versionNumberLabel.setText(model.getVersion());
         legalTextArea.setFocusable(false);
-        add(rootPanel);
     }
 }

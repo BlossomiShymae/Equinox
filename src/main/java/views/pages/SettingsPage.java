@@ -19,18 +19,17 @@ public class SettingsPage extends Page {
     @Inject
     public SettingsPage(SettingsViewModel settingsViewModel) {
         super();
+        add(rootPanel);
         viewModel = settingsViewModel;
-        setView();
 
+        setView();
         selectFolderButton.addActionListener(e -> {
             JFileChooser fileChooser = new JFileChooser();
             fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
             int result = fileChooser.showSaveDialog(this);
             if (result == JFileChooser.APPROVE_OPTION) viewModel.saveSelectedFolder(fileChooser.getSelectedFile());
         });
-
         viewModel.propertyChanged.subscribe(this::onPropertyChanged);
-        add(rootPanel);
     }
 
     private void onPropertyChanged(PropertyChangedEventArgs e) {

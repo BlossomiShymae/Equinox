@@ -20,16 +20,15 @@ public class NotificationCard extends JPanel {
 
     public NotificationCard(NotificationCardViewModel notificationCardViewModel) {
         super();
-        viewModel = notificationCardViewModel;
-
-        removeButton.addActionListener(e -> viewModel.clearNotificationCommand());
         GridBagConstraints constraints = new GridBagConstraints();
         setLayout(new GridBagLayout());
         constraints.insets = new Insets(8,8,8,8);
-
-        setView();
         revalidate();
         add(rootPanel, constraints);
+        viewModel = notificationCardViewModel;
+
+        setView();
+        removeButton.addActionListener(e -> viewModel.clearNotificationCommand());
     }
 
     private void setView() {

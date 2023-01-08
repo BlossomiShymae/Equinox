@@ -23,15 +23,14 @@ public class NotificationsPage extends Page {
     @Inject
     public NotificationsPage(NotificationsViewModel notificationsViewModel, EventAggregatorService eventAggregatorService) {
         super();
+        add(rootPanel);
         viewModel = notificationsViewModel;
         eventAggregator = eventAggregatorService;
 
-        viewModel.propertyChanged.subscribe(this::onPropertyChanged);
-        clearNotificationsButton.addActionListener(e -> viewModel.clearNotificationsCommand());
-
         notificationsPanel.setLayout(new BoxLayout(notificationsPanel, BoxLayout.PAGE_AXIS));
         notificationsPanel.setAlignmentY(JPanel.TOP_ALIGNMENT);
-        add(rootPanel);
+        viewModel.propertyChanged.subscribe(this::onPropertyChanged);
+        clearNotificationsButton.addActionListener(e -> viewModel.clearNotificationsCommand());
     }
 
     private void onPropertyChanged(PropertyChangedEventArgs e) {

@@ -19,12 +19,8 @@ public class MainWindowView extends JFrame {
     @Inject
     public MainWindowView(MainWindowViewModel mainWindowViewModel, PageService pageService, ResourceLoaderService resourceLoaderService, EventAggregatorService eventAggregatorService) {
         super();
+        add(rootPanel);
         viewModel = mainWindowViewModel;
-        addWindowStateListener(e -> {
-            if (e.getNewState() == ICONIFIED) {
-                setVisible(false);
-            }
-        });
 
         // Setup pages for the page panel
         for (var navigation: viewModel.getPageNavigationList()) {
@@ -39,6 +35,10 @@ public class MainWindowView extends JFrame {
             setVisible(true);
             setExtendedState(JFrame.NORMAL);
         });
-        add(rootPanel);
+        addWindowStateListener(e -> {
+            if (e.getNewState() == ICONIFIED) {
+                setVisible(false);
+            }
+        });
     }
 }
