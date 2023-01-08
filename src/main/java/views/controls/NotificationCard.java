@@ -1,5 +1,7 @@
 package views.controls;
 
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import viewmodels.controls.NotificationCardViewModel;
 
 import javax.swing.*;
@@ -63,7 +65,7 @@ public class NotificationCard extends JPanel {
         rootPanel = new JPanel();
         rootPanel.setLayout(new GridBagLayout());
         profileIconPanel = new JPanel();
-        profileIconPanel.setLayout(new com.intellij.uiDesigner.core.GridLayoutManager(1, 1, new Insets(0, 0, 0, 8), -1, -1));
+        profileIconPanel.setLayout(new GridLayoutManager(1, 1, new Insets(0, 0, 0, 8), -1, -1));
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
@@ -72,7 +74,7 @@ public class NotificationCard extends JPanel {
         rootPanel.add(profileIconPanel, gbc);
         profileIcon = new JLabel();
         profileIcon.setText("");
-        profileIconPanel.add(profileIcon, new com.intellij.uiDesigner.core.GridConstraints(0, 0, 1, 1, com.intellij.uiDesigner.core.GridConstraints.ANCHOR_WEST, com.intellij.uiDesigner.core.GridConstraints.FILL_NONE, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, com.intellij.uiDesigner.core.GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        profileIconPanel.add(profileIcon, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         contentPanel = new JPanel();
         contentPanel.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -150,4 +152,5 @@ public class NotificationCard extends JPanel {
     public JComponent $$$getRootComponent$$$() {
         return rootPanel;
     }
+
 }
